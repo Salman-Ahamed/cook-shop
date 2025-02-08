@@ -8,11 +8,12 @@ import { usePathname } from "next/navigation";
 export const Navbar = () => {
   const pathName = usePathname();
 
-  const navItemClass = "text-sm active:font-medium pb-[24px] inline-block ";
+  const navItemClass =
+    "text-sm active:font-medium pb-5 lg:pb-[24px] inline-block ";
 
   return (
     <div className="font-fredoke">
-      <nav className="flex justify-between  items-center w-full max-w-[1366px] mx-auto px-20 pt-[30px] gap-2.5">
+      <nav className="flex justify-between  items-center w-full max-w-[1366px] mx-auto px-5 sm:px-10 lg:px-20 pt-[30px] gap-2.5">
         <figure className="pb-5">
           <Image
             alt="logo"
@@ -22,13 +23,13 @@ export const Navbar = () => {
             height={20}
           />
         </figure>
-        <div className="flex justify-between items-center gap-5 ">
+        <div className="flex justify-between items-center gap-5">
           <div>
             {navItems.map(({ label, link }) => (
               <Link
                 className={cn(
                   navItemClass,
-                  "px-[37.5px]",
+                  "px-5 sm:px-5 lg:px-[37.5px]",
                   pathName === link && "font-medium border-b-2 border-[#FF7A00]"
                 )}
                 href={link}
