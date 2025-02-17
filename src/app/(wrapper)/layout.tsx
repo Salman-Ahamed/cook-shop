@@ -4,7 +4,7 @@ import { FC } from "react";
 
 const Layout: FC<IChildren> = ({ children }) => {
   return (
-    <div className="font-poppins">
+    <div className="font-poppins min-h-screen flex flex-col">
       <Navbar />
       {children}
       <Footer />
