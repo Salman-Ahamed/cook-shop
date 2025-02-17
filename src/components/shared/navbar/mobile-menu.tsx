@@ -1,10 +1,11 @@
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Dispatch, FC, SetStateAction } from "react";
 
-type TProps = { setOpen: Dispatch<SetStateAction<boolean>> };
+type TProps = { open: boolean; setOpen: Dispatch<SetStateAction<boolean>> };
 
-export const MobileMenu: FC<TProps> = ({ setOpen }) => {
+export const MobileMenu: FC<TProps> = ({ open, setOpen }) => {
   const router = useRouter();
 
   const handleClick = (link: string) => {
@@ -13,7 +14,12 @@ export const MobileMenu: FC<TProps> = ({ setOpen }) => {
   };
 
   return (
-    <div className="bg-[#9C4B00] w-full max-w-[217px] fixed left-0 top-0 h-screen p-5 py-[70px] flex flex-col justify-start items-start gap-[30px] text-white text-[11px] font-poppins">
+    <div
+      className={cn(
+        "bg-[#9C4B00] w-full max-w-[217px] fixed left-0 top-0 h-screen p-5 py-[70px] flex flex-col justify-start items-start gap-[30px] text-white text-[11px] font-poppins transition-all delay-150",
+        open ? "translate-x-0" : "-translate-x-full"
+      )}
+    >
       {items.map(({ label, link, icon }) => (
         <div
           key={label}

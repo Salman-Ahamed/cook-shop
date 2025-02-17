@@ -22,7 +22,7 @@ export const Navbar = () => {
         </figure>
 
         <MenuItems />
-        {open && <MobileMenu setOpen={setOpen} />}
+        <MobileMenu open={open} setOpen={setOpen} />
 
         <figure className="block md:hidden pb-6" onClick={() => setOpen(!open)}>
           <Image
