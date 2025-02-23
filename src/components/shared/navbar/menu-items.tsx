@@ -12,6 +12,7 @@ export const MenuItems = () => {
       <div>
         {navItems.map(({ label, link }) => (
           <Link
+            key={label}
             className={cn(
               navItemClass,
               "px-5 sm:px-5 lg:px-[37.5px]",
