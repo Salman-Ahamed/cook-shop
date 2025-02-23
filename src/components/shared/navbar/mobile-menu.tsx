@@ -16,7 +16,7 @@ export const MobileMenu: FC<TProps> = ({ open, setOpen }) => {
   return (
     <div
       className={cn(
-        "bg-[#9C4B00] md:hidden w-full max-w-[217px] fixed left-0 top-0 h-screen p-5 py-[70px] flex flex-col justify-start items-start gap-[30px] text-white text-[11px] font-poppins transition-all delay-150",
+        "bg-[#9C4B00] md:hidden w-full max-w-[217px] fixed left-0 top-0 h-screen p-5 py-[70px] flex flex-col justify-start items-start gap-[30px] text-white text-[11px] font-poppins transition-all delay-150 z-50",
         open ? "translate-x-0" : "-translate-x-full"
       )}
     >

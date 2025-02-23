@@ -8,19 +8,15 @@ const HomePage = () => {
   const searchParams = useSearchParams();
   const items = searchParams.getAll("item");
 
-  return (
-    <main className="flex-1 flex items-center justify-center w-full flex-col">
-      {items?.length > 0 ? (
-        <Listing items={items} />
-      ) : (
-        <div className="flex items-center justify-center w-full flex-col px-2.5 gap-2.5">
-          <figure className="pb-2.5">
-            <Image alt="logo" src="/logo.svg" width={137} height={136} />
-          </figure>
+  return items?.length > 0 ? (
+    <Listing />
+  ) : (
+    <main className="flex flex-1 items-center justify-center w-full flex-col px-2.5 gap-2.5">
+      <figure className="pb-2.5">
+        <Image alt="logo" src="/logo.svg" width={137} height={136} />
+      </figure>
 
-          <OnlySearch />
-        </div>
-      )}
+      <OnlySearch />
     </main>
   );
 };
