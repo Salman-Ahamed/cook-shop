@@ -9,9 +9,13 @@ export const Listing = () => (
         src="/banner.png"
         fill
         sizes="100vw"
-        className="object-cover"
+        className="object-cover hidden md:block"
       />
       <ListingSearch />
+    </div>
+
+    <div>
+      <div>Product Card</div>
     </div>
   </main>
 );

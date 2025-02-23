@@ -11,7 +11,7 @@ export const OnlySearch = () => {
   return (
     <>
       <div className="flex items-center gap-3.5 border border-[#B3B3B3] rounded-t-xl w-full max-w-[706px] px-2.5 py-1.5">
-        <button className="focus:outline-none" onClick={handleSearch}>
+        <button className="focus:outline-none min-w-fit" onClick={handleSearch}>
           <Image alt="search" src="/search.svg" width={17} height={14} />
         </button>
 

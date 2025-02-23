@@ -36,11 +36,11 @@ export const ListingSearch = () => {
           className="min-w-fit h-auto"
         />
       </div>
-      <div className="flex flex-wrap gap-1.5 mt-2.5">
+      <div className="flex gap-1.5 mt-2.5 w-full overflow-x-scroll pb-2.5">
         {items.map((item) => (
           <div
             key={item}
-            className="bg-primary text-white py-1 text-sm px-2 rounded-full flex justify-center items-center gap-1.5"
+            className="bg-primary text-white py-1 text-sm px-2 rounded-full flex justify-center items-center gap-1.5 min-w-fit"
           >
             <span>#{item}</span>
             <button onClick={() => removeItem(item)}>
