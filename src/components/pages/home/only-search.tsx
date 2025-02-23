@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState } from "react";
 
-export const HomeSearch = () => {
+export const OnlySearch = () => {
   const [items, setItems] = useState<string[]>([]);
   const [search, setSearch] = useState("");
 
@@ -45,10 +45,16 @@ export const HomeSearch = () => {
   const filteredCategories = getFilteredCategories();
   const bestMatch = filteredCategories[0];
 
+  const handleSearch = () => {
+    // handle search
+  };
+
   return (
     <>
       <div className="flex items-center gap-3.5 border border-[#B3B3B3] rounded-t-xl w-full max-w-[706px] px-2.5 py-1.5">
-        <Image alt="logo" src="/search.svg" width={17} height={14} />
+        <button className="focus:outline-none" onClick={handleSearch}>
+          <Image alt="logo" src="/search.svg" width={17} height={14} />
+        </button>
 
         {items.length !== 0 && (
           <div className="flex items-center gap-1">
