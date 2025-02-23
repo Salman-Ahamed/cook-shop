@@ -36,7 +36,7 @@ export const ListingSearch = () => {
           className="min-w-fit h-auto"
         />
       </div>
-      <div className="flex gap-1.5 mt-2.5 w-full overflow-x-scroll pb-2.5">
+      <div className="flex gap-1.5 mt-2.5 w-full md:flex-wrap overflow-x-scroll md:overflow-x-auto pb-2.5">
         {items.map((item) => (
           <div
             key={item}
