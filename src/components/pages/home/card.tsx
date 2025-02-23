@@ -1,18 +1,8 @@
+import { IRecipe } from "@/interface";
 import Image from "next/image";
 import { FC } from "react";
 
-interface IProps {
-  img: string;
-  title: string;
-  category: string;
-  author: string;
-  time: string;
-  desc: string;
-  peopleCount: number;
-  peopleImages: string[];
-}
-
-export const Card: FC<IProps> = (props) => {
+export const Card: FC<IRecipe> = (props) => {
   const { img, title, category, author, time, desc, peopleCount } = props;
 
   return (
@@ -24,8 +14,7 @@ export const Card: FC<IProps> = (props) => {
             src={img}
             width={240}
             height={180}
-            sizes="100%"
-            className="w-full h-auto rounded-[8px]"
+            className="w-full h-[180px] rounded-[8px]"
           />
         </figure>
         {/* Body Section */}
@@ -51,7 +40,13 @@ export const Card: FC<IProps> = (props) => {
         </div>
         <div className="flex -space-x-2.5 relative">
           {props.peopleImages.map((item) => (
-            <Image alt="Favorite" src={item} width={23} height={23} />
+            <Image
+              alt="Favorite"
+              key={item}
+              src={item}
+              width={23}
+              height={23}
+            />
           ))}
           <div className="size-6 shadow-md rounded-full bg-[#FDFDFD] text-[#A8A8A8] flex justify-center items-center text-[11px]">
             <span>+{peopleCount}</span>

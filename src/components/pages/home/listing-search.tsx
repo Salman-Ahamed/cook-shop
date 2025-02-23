@@ -33,7 +33,7 @@ export const ListingSearch = () => {
           src="/microphone.png"
           width={12}
           height={15}
-          className="min-w-fit h-auto"
+          className="min-w-fit"
         />
       </div>
       <div className="flex gap-1.5 mt-2.5 w-full md:flex-wrap overflow-x-scroll md:overflow-x-auto pb-2.5">

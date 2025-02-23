@@ -9,7 +9,7 @@ const HomePage = () => {
   const items = searchParams.getAll("item");
 
   return items?.length > 0 ? (
-    <Listing />
+    <Listing items={items} />
   ) : (
     <main className="flex flex-1 items-center justify-center w-full flex-col px-2.5 gap-2.5 overflow-x-hidden">
       <figure className="pb-2.5">
