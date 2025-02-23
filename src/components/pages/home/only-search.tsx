@@ -48,8 +48,8 @@ export const OnlySearch = () => {
   const handleSearch = () => {
     const searchParams = new URLSearchParams(window.location.search);
 
-    searchParams.delete("search");
-    items.forEach((item) => searchParams.append("search", item));
+    searchParams.delete("item");
+    items.forEach((item) => searchParams.append("item", item));
     window.history.replaceState(null, "", `?${searchParams.toString()}`);
   };
 
