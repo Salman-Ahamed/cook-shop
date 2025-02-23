@@ -46,7 +46,11 @@ export const OnlySearch = () => {
   const bestMatch = filteredCategories[0];
 
   const handleSearch = () => {
-    // handle search
+    const searchParams = new URLSearchParams(window.location.search);
+
+    searchParams.delete("search");
+    items.forEach((item) => searchParams.append("search", item));
+    window.history.replaceState(null, "", `?${searchParams.toString()}`);
   };
 
   return (
@@ -59,7 +63,10 @@ export const OnlySearch = () => {
         {items.length !== 0 && (
           <div className="flex items-center gap-1">
             {items.map((item) => (
-              <div className="bg-primary text-white py-0.5 text-xs px-2 rounded-full flex justify-center items-center gap-1.5">
+              <div
+                className="bg-primary text-white py-0.5 text-xs px-2 rounded-full flex justify-center items-center gap-1.5"
+                key={item}
+              >
                 <span> {item}</span>
                 <button onClick={() => removeItem(item)}>
                   <Image alt="logo" src="/close.svg" width={12} height={12} />
@@ -82,6 +89,7 @@ export const OnlySearch = () => {
         <div className="bg-[#F3F3F3] border border-[#B3B3B3] w-full pb-2.5 max-w-[706px] flex flex-col rounded-b-xl">
           {filteredCategories.map((category) => (
             <button
+              key={category}
               className={cn(
                 "px-5 py-1.5 hover:bg-[#CCCCCC50] w-full text-start hover:border-s hover:border-primary",
                 bestMatch === category &&
