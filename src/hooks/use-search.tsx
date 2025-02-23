@@ -1,6 +1,8 @@
+"use client";
+
 import { categories } from "@/lib/data";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 export const useSearch = () => {
   const searchParams = useSearchParams();
@@ -8,13 +10,13 @@ export const useSearch = () => {
   const [items, setItems] = useState<string[]>(searchItems || []);
   const [search, setSearch] = useState("");
 
-  const handleSearch = () => {
+  const handleSearch = useCallback(() => {
     const searchParams = new URLSearchParams(window.location.search);
 
     searchParams.delete("item");
     items.forEach((item) => searchParams.append("item", item));
     window.history.replaceState(null, "", `?${searchParams.toString()}`);
-  };
+  }, [items]);
 
   const addItem = (item?: string) => {
     if (!search) return;
