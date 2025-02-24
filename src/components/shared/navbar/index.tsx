@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
+import { Logo } from "./logo";
 import { MenuItems } from "./menu-items";
 import { MobileMenu } from "./mobile-menu";
 
@@ -12,15 +12,7 @@ export const Navbar = () => {
   return (
     <div className="font-fredoke relative">
       <nav className="flex justify-between  items-center w-full max-w-[1366px] mx-auto px-5 sm:px-10 lg:px-20 pt-[30px] gap-2.5">
-        <Link href="/" className="pb-5">
-          <Image
-            alt="logo"
-            src="/logo.png"
-            className="w-[200px] h-auto"
-            width={200}
-            height={20}
-          />
-        </Link>
+        <Logo />
 
         <MenuItems />
         <MobileMenu open={open} setOpen={setOpen} />
