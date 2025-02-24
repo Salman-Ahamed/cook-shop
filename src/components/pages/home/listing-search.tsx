@@ -1,12 +1,29 @@
 "use client";
 
 import { useSearch } from "@/hooks/use-search";
+import { IClassName } from "@/interface";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { useEffect } from "react";
+import { FC, useEffect } from "react";
+
+type TProps = { item: string; onClick: () => void } & IClassName;
+const Tags: FC<TProps> = ({ item, onClick, className }) => (
+  <div
+    className={cn(
+      "bg-primary text-white py-1 text-sm px-2 rounded-full flex justify-center items-center gap-1.5 min-w-fit",
+      className
+    )}
+  >
+    <span>#{item}</span>
+    <button onClick={onClick}>
+      <Image alt="close" src="/close.svg" width={12} height={12} />
+    </button>
+  </div>
+);
 
 export const ListingSearch = () => {
-  const { items, search, addItem, setSearch, removeItem, handleSearch } =
-    useSearch();
+  const { items, search, searchItem, addItem, ...oth } = useSearch();
+  const { setSearch, removeItem, handleSearch } = oth;
 
   useEffect(() => handleSearch(), [items]);
 
@@ -26,7 +43,7 @@ export const ListingSearch = () => {
           placeholder="Search..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && addItem()}
+          onKeyDown={(e) => e.key === "Enter" && addItem({ isSearch: true })}
         />
         <Image
           alt="microphone"
@@ -37,16 +54,15 @@ export const ListingSearch = () => {
         />
       </div>
       <div className="flex gap-1.5 mt-2.5 w-full md:flex-wrap overflow-x-scroll md:overflow-x-auto pb-2.5">
+        {searchItem && (
+          <Tags
+            item={searchItem}
+            className="bg-orange-600"
+            onClick={() => removeItem(searchItem, true)}
+          />
+        )}
         {items.map((item) => (
-          <div
-            key={item}
-            className="bg-primary text-white py-1 text-sm px-2 rounded-full flex justify-center items-center gap-1.5 min-w-fit"
-          >
-            <span>#{item}</span>
-            <button onClick={() => removeItem(item)}>
-              <Image alt="close" src="/close.svg" width={12} height={12} />
-            </button>
-          </div>
+          <Tags item={item} key={item} onClick={() => removeItem(item)} />
         ))}
       </div>
     </div>

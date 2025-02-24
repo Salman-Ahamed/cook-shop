@@ -11,7 +11,10 @@ export const OnlySearch = () => {
   return (
     <>
       <div className="flex items-center gap-3.5 border border-[#B3B3B3] rounded-t-xl w-full max-w-[706px] px-2.5 py-1.5">
-        <button className="focus:outline-none min-w-fit" onClick={handleSearch}>
+        <button
+          className="focus:outline-none min-w-fit"
+          onClick={() => handleSearch()}
+        >
           <Image alt="search" src="/search.svg" width={17} height={14} />
         </button>
 
@@ -35,7 +38,9 @@ export const OnlySearch = () => {
           placeholder={items.length === 0 ? "Search..." : ""}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && addItem()}
+          onKeyDown={(e) =>
+            e.key === "Enter" && addItem({ item: bestMatch.toLowerCase() })
+          }
           className="bg-transparent focus:outline-none text-primary text-xs"
         />
       </div>
@@ -47,11 +52,11 @@ export const OnlySearch = () => {
               key={category}
               className={cn(
                 "px-5 py-1.5 hover:bg-[#CCCCCC50] w-full text-start hover:border-s hover:border-primary",
-                bestMatch === category &&
-                  category.includes(search) &&
+                bestMatch.toLowerCase() === category.toLowerCase() &&
+                  category.toLowerCase().includes(search.toLowerCase()) &&
                   "bg-[#CCCCCC50] border-s border-primary"
               )}
-              onClick={() => addItem(category)}
+              onClick={() => addItem({ item: category.toLowerCase() })}
             >
               {category}
             </button>

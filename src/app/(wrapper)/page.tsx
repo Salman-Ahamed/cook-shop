@@ -6,7 +6,7 @@ import { useSearchParams } from "next/navigation";
 
 const HomePage = () => {
   const searchParams = useSearchParams();
-  const items = searchParams.getAll("item");
+  const items = searchParams.getAll("category");
 
   return items?.length > 0 ? (
     <Listing items={items} />
