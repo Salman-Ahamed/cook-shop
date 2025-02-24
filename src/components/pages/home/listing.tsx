@@ -4,10 +4,13 @@ import { FC } from "react";
 import { Card } from "./card";
 import { ListingSearch } from "./listing-search";
 
-type TProps = { items: string[] };
-export const Listing: FC<TProps> = ({ items }) => {
+type TProps = { items: string[]; search: string | null };
+export const Listing: FC<TProps> = ({ items, search }) => {
   const data = recipes
     .filter((item) => items.includes(item.category.toLocaleLowerCase()))
+    .filter((item) =>
+      search ? item.title.toLowerCase().includes(search) : item
+    )
     .slice(0, 6);
 
   return (
@@ -23,8 +26,8 @@ export const Listing: FC<TProps> = ({ items }) => {
         <ListingSearch />
       </div>
 
-      <div className="w-full max-w-screen-lg mx-auto px-2.5 md:px-0 grid grid-cols-3 place-items-center gap-5 py-11">
-        {data.map((item) => (
+      <div className="w-full max-w-screen-lg mx-auto px-2.5 md:px-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center gap-1 sm:gap-5 py-11">
+        {data.map((item, i) => (
           <Card key={item.id} {...item} />
         ))}
       </div>

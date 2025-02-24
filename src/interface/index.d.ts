@@ -14,4 +14,5 @@ export interface IRecipe {
   desc: string;
   peopleCount: number;
   peopleImages: string[];
+  ratting: number;
 }

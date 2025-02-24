@@ -14,6 +14,7 @@ export const recipes: IRecipe[] = [
     desc: "Traditional Italian layered pasta dish with rich meat sauce and béchamel, originating from Emilia-Romagna.",
     peopleCount: 45,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "2",
@@ -25,6 +26,7 @@ export const recipes: IRecipe[] = [
     desc: "Northern Italian rice dish cooked in broth to creamy consistency, typically flavored with parmesan and saffron.",
     peopleCount: 65,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "3",
@@ -36,6 +38,7 @@ export const recipes: IRecipe[] = [
     desc: "Iconic Venetian dessert combining coffee-soaked ladyfingers with mascarpone cream, dusted with cocoa.",
     peopleCount: 120,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "4",
@@ -47,6 +50,7 @@ export const recipes: IRecipe[] = [
     desc: "Authentic Neapolitan pizza with San Marzano tomatoes, fresh mozzarella, and basil cooked in wood-fired oven.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "5",
@@ -58,6 +62,7 @@ export const recipes: IRecipe[] = [
     desc: "Milanese specialty featuring cross-cut veal shanks braised with vegetables, white wine and broth.",
     peopleCount: 85,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "6",
@@ -69,6 +74,7 @@ export const recipes: IRecipe[] = [
     desc: "Creamy Piedmont dessert of sweetened cream thickened with gelatin and served with berry coulis.",
     peopleCount: 150,
     peopleImages,
+    ratting: 4.5,
   },
 
   // Mexican Category
@@ -82,6 +88,7 @@ export const recipes: IRecipe[] = [
     desc: "Complex Oaxacan sauce featuring chocolate and chili peppers served over slow-cooked poultry.",
     peopleCount: 75,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "8",
@@ -93,6 +100,7 @@ export const recipes: IRecipe[] = [
     desc: "Michocán-style pork confit served in soft corn tortillas with fresh cilantro and lime.",
     peopleCount: 180,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "9",
@@ -104,6 +112,7 @@ export const recipes: IRecipe[] = [
     desc: "Patriotic dish of poblano peppers stuffed with meat and fruits, topped with walnut sauce.",
     peopleCount: 95,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "10",
@@ -115,6 +124,7 @@ export const recipes: IRecipe[] = [
     desc: "Traditional hominy stew from Jalisco with pork and red chili peppers, served with radishes.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "11",
@@ -126,6 +136,7 @@ export const recipes: IRecipe[] = [
     desc: "Steamed corn dough filled with chicken in green salsa, wrapped in corn husks for cooking.",
     peopleCount: 130,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "12",
@@ -137,6 +148,7 @@ export const recipes: IRecipe[] = [
     desc: "Refreshing rice-based drink with cinnamon and vanilla, served chilled over ice.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
 
   // Japanese Category
@@ -150,6 +162,7 @@ export const recipes: IRecipe[] = [
     desc: "Fukuoka-style ramen featuring milky pork bone broth with chashu pork and marinated eggs.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "14",
@@ -161,6 +174,7 @@ export const recipes: IRecipe[] = [
     desc: "Chef's selection of nigiri sushi using seasonal fish and premium ingredients from Tsukiji market.",
     peopleCount: 150,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "15",
@@ -172,6 +186,7 @@ export const recipes: IRecipe[] = [
     desc: "Osaka-style savory pancake with cabbage, pork, and signature okonomi sauce topping.",
     peopleCount: 90,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "16",
@@ -183,6 +198,7 @@ export const recipes: IRecipe[] = [
     desc: "Traditional multi-course meal emphasizing seasonal ingredients and artistic presentation.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "17",
@@ -194,6 +210,7 @@ export const recipes: IRecipe[] = [
     desc: "Grilled freshwater eel glazed with sweet soy-based sauce served over steamed rice.",
     peopleCount: 110,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "18",
@@ -205,6 +222,7 @@ export const recipes: IRecipe[] = [
     desc: "Chewy rice cake dessert filled with sweet red bean paste and dusted with green tea powder.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
 
   // Vegan Category
@@ -218,6 +236,7 @@ export const recipes: IRecipe[] = [
     desc: "Meaty texture of young jackfruit mimics pulled pork in these spicy plant-based tacos.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "20",
@@ -229,6 +248,7 @@ export const recipes: IRecipe[] = [
     desc: "Nutrient-packed bowl with quinoa, roasted veggies, avocado and tahini dressing.",
     peopleCount: 85,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "21",
@@ -240,6 +260,7 @@ export const recipes: IRecipe[] = [
     desc: "Plant-based version of classic Italian sauce using protein-rich lentils instead of meat.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "22",
@@ -251,6 +272,7 @@ export const recipes: IRecipe[] = [
     desc: "Dairy-free cheese alternative made from soaked cashews with nutritional yeast.",
     peopleCount: 150,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "23",
@@ -262,6 +284,7 @@ export const recipes: IRecipe[] = [
     desc: "Flavorful Indian-inspired dish with coconut milk, tomatoes, and aromatic spices.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
   {
     id: "24",
@@ -273,5 +296,6 @@ export const recipes: IRecipe[] = [
     desc: "Innovative dessert using chickpea brine as egg substitute for light chocolate mousse.",
     peopleCount: 200,
     peopleImages,
+    ratting: 4.5,
   },
 ];

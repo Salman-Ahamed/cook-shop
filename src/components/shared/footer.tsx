@@ -1,4 +1,4 @@
-import { IChildrenClassName } from "@/interface";
+import { IChildrenClassName, IClassName } from "@/interface";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
@@ -11,8 +11,8 @@ const Item: FC<IChildrenClassName> = ({ children, className }) => (
   </div>
 );
 
-export const Footer = () => (
-  <footer className="border-t border-[#C2C2C2] w-full">
+export const Footer: FC<IClassName> = ({ className }) => (
+  <footer className={cn("border-t border-[#C2C2C2] w-full", className)}>
     <div className="w-full md:w-fit justify-center items-center flex-col gap-2.5 flex mx-auto text-[#494949] font-poppins pt-2">
       <figure className="flex justify-center items-center gap-1.5 md:hidden">
         <span>© 2023 Cookshow</span>

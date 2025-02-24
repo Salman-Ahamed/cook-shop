@@ -7,7 +7,7 @@ const Layout: FC<IChildren> = ({ children }) => {
     <div className="font-poppins min-h-screen flex flex-col">
       <Navbar />
       {children}
-      <Footer />
+      <Footer className="hidden sm:block" />
     </div>
   );
 };
