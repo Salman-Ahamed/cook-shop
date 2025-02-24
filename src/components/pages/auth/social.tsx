@@ -1,8 +1,9 @@
+import { TButton } from "@/interface";
 import Image from "next/image";
-import { ButtonHTMLAttributes, FC } from "react";
+import { FC } from "react";
 
-type TButton = ButtonHTMLAttributes<HTMLButtonElement> & { icon: string };
-const Button: FC<TButton> = (props) => (
+type TBtnProps = TButton & { icon: string };
+const Button: FC<TBtnProps> = (props) => (
   <button className="w-full py-1 text-center text-xs flex items-center justify-center gap-1 border-[1px] border-black rounded-[5px] focus:outline-none">
     <Image alt="google" src={props.icon} width={18} height={18} />
     {props.children}

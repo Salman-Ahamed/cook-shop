@@ -1,5 +1,5 @@
-const SignUp = () => {
-  return <div>SignUp</div>;
-};
+import { SignupForm } from "@/components/pages/auth";
+
+const SignUp = () => <SignupForm />;
 
 export default SignUp;
