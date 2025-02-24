@@ -14,7 +14,7 @@ export const Listing: FC<TProps> = ({ items, search }) => {
     .slice(0, 6);
 
   return (
-    <main className="flex-1">
+    <main className="flex-1 pb-32">
       <div className="relative w-full  flex justify-center items-center">
         <Image
           alt="Banner"
@@ -26,7 +26,7 @@ export const Listing: FC<TProps> = ({ items, search }) => {
         <ListingSearch />
       </div>
 
-      <div className="w-full max-w-screen-lg mx-auto px-2.5 md:px-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center gap-1 sm:gap-5 py-11">
+      <div className="w-full max-w-screen-lg mx-auto px-2.5 md:px-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center gap-1 sm:gap-5 sm:gap-y-28 py-11">
         {data.map((item, i) => (
           <Card key={item.id} {...item} />
         ))}
