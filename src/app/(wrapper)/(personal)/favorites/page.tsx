@@ -1,9 +1,10 @@
 import { ListItem } from "@/components/shared";
 import { IRecipe } from "@/interface";
+import { recipes } from "@/lib/data";
 import Image from "next/image";
 
 const FavoritesPage = () => {
-  const data: IRecipe[] = []; // recipes.slice(0, 6);
+  const data: IRecipe[] = recipes.slice(0, 6);
 
   return (
     <div className="pb-40">
