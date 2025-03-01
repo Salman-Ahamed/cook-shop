@@ -18,7 +18,7 @@ export const Card: FC<TProps> = (props) => {
   return (
     <div
       className={cn(
-        "flex sm:flex-col font-poppins border-t sm:border-t-0 border-[#DBDBDB] gap-2 sm:gap-0 w-full h-auto",
+        "flex sm:flex-col font-poppins border-t sm:border-t-0 border-[#DBDBDB] gap-2 sm:gap-0 w-full h-auto min-w-fit",
         isSuggestion
           ? "sm:max-w-[146px] sm:min-h-[200px] max-h-[200px]"
           : "sm:max-w-[240px] sm:min-h-[375px] max-h-[381px]"
