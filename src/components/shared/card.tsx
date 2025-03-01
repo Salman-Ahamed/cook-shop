@@ -3,15 +3,25 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { FC } from "react";
 
-type TProps = IRecipe & { isProfile?: boolean };
+type TProps = IRecipe & { isProfile?: boolean; isSuggestion?: boolean };
 export const Card: FC<TProps> = (props) => {
   const { img, title, category, author, time, desc, ...oth } = props;
-  const { peopleCount, ratting, isProfile } = oth || {};
+  const { peopleCount, ratting, isProfile, isSuggestion } = oth || {};
+
+  const isMy = isProfile || isSuggestion;
 
   const descriptionClass = "text-[14px] leading-[22px] text-[#A5A5A5] w-full";
 
   return (
-    <div className="w-full sm:max-w-[240px] h-auto sm:min-h-[375px] max-h-[381px] flex sm:flex-col font-poppins border-t sm:border-t-0 border-[#DBDBDB] gap-2 sm:gap-0">
+    <div
+      className={cn(
+        "flex sm:flex-col font-poppins border-t sm:border-t-0 border-[#DBDBDB] gap-2 sm:gap-0",
+        "w-full h-auto",
+        isSuggestion
+          ? "sm:max-w-[146px] sm:min-h-[200px] max-h-[200px]"
+          : "sm:max-w-[240px] sm:min-h-[375px] max-h-[381px]"
+      )}
+    >
       <figure>
         <Image
           alt={title}
@@ -28,22 +38,33 @@ export const Card: FC<TProps> = (props) => {
             src={img}
             width={240}
             height={180}
-            className="w-full h-[180px] rounded-[8px] hidden sm:block"
+            className={cn(
+              "w-full h-[180px] rounded-[8px] hidden sm:block",
+              isSuggestion && "h-[98px]"
+            )}
           />
         </figure>
         {/* Body Section */}
         <div className="pt-2">
-          <h3 className="text-[#9C4B00] font-medium">{title}</h3>
+          <h3 className="text-[#9C4B00] font-medium text-nowrap overflow-hidden overflow-ellipsis">
+            {title}
+          </h3>
           <h5 className="text-[#999999] text-sm">{category}</h5>
-          <div className="flex justify-start  sm:justify-between  items-center gap-5 sm:gap-1.5">
-            {!isProfile && <p>{author}</p>}
-            <div className="flex gap-1.5">
-              <Image alt="clock" src="/clock.svg" width={12} height={12} />
-              <span>{time}</span>
+          {!isSuggestion && (
+            <div className="flex justify-start  sm:justify-between  items-center gap-5 sm:gap-1.5">
+              {!isProfile && <p>{author}</p>}
+              <div className="flex gap-1.5">
+                <Image alt="clock" src="/clock.svg" width={12} height={12} />
+                <span>{time}</span>
+              </div>
             </div>
-          </div>
+          )}
           <desc className={cn(descriptionClass, "sm:block hidden")}>
-            “{desc.length > 55 ? `${desc.slice(0, 55)}...` : desc}”
+            “
+            {desc.length > (isMy ? 15 : 55)
+              ? `${desc.slice(0, isMy ? 15 : 55)}...`
+              : desc}
+            ”
           </desc>
           <desc className={cn(descriptionClass, "sm:hidden block")}>
             “{desc.length > 20 ? `${desc.slice(0, 20)}...` : desc}”
@@ -51,7 +72,7 @@ export const Card: FC<TProps> = (props) => {
         </div>
 
         <CardFooter
-          isProfile={isProfile}
+          isMy={isMy}
           images={props.peopleImages}
           peopleCount={peopleCount}
           className="flex sm:hidden"
@@ -59,7 +80,7 @@ export const Card: FC<TProps> = (props) => {
       </div>
       {/* Footer Section */}
       <CardFooter
-        isProfile={isProfile}
+        isMy={isMy}
         images={props.peopleImages}
         peopleCount={peopleCount}
         className="hidden sm:flex"
@@ -71,9 +92,9 @@ export const Card: FC<TProps> = (props) => {
   );
 };
 
-type FProps = { images: string[]; peopleCount: number; isProfile?: boolean };
+type FProps = { images: string[]; peopleCount: number; isMy?: boolean };
 const CardFooter: FC<FProps & IClassName> = (props) => {
-  const { images, peopleCount, isProfile, className } = props;
+  const { images, peopleCount, isMy, className } = props;
 
   const userData = [
     { img: "/profile-love.svg", total: 41 },
@@ -83,7 +104,7 @@ const CardFooter: FC<FProps & IClassName> = (props) => {
 
   return (
     <div className={cn("flex justify-between items-center", className)}>
-      {isProfile ? (
+      {isMy ? (
         userData.map((item) => (
           <div className="flex items-center gap-1" key={item.img}>
             <Image alt="Favorite" src={item.img} width={23} height={21} />

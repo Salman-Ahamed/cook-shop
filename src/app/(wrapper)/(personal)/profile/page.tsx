@@ -7,7 +7,13 @@ const ProfilePage = () => {
   const data: IRecipe[] = recipes.slice(0, 6);
 
   return (
-    <div className="pb-40">
+    <div className="pb-40 relative">
+      <button
+        className="absolute top-[50%] right-1 bg-gradient-to-t to-[#FF7A00] from-[#9C4B00] rounded-[10px] size-[45px] flex justify-center
+       items-center"
+      >
+        <Image alt="add" src="/plus.svg" width={15} height={15} />
+      </button>
       {data.length > 0 ? (
         <ListItem isProfile data={data} />
       ) : (
