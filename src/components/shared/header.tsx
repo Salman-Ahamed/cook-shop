@@ -22,11 +22,14 @@ export const Header = () => {
   ];
 
   return (
-    <div className="flex justify-around items-center pt-[22px] pb-5 gap-5 w-full">
+    <div className="flex justify-around items-center pt-3.5 sm:pt-[22px] pb-2 sm:pb-5 gap-5 w-full bg-white rounded-t-[22px]">
       {items.map(({ icon, label, link }) => (
         <Link
           href={link}
-          className={cn("flex gap-1.5", pathName === link && "font-medium")}
+          className={cn(
+            "flex text-sm sm:text-base gap-1.5",
+            pathName === link && "font-medium"
+          )}
           key={label}
         >
           <Image alt={label} src={icon} width={22} height={20} />

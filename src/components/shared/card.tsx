@@ -3,20 +3,22 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { FC } from "react";
 
-type TProps = IRecipe & { isProfile?: boolean; isSuggestion?: boolean };
+type TProps = IRecipe & {
+  isProfile?: boolean;
+  isFavorite?: boolean;
+  isSuggestion?: boolean;
+};
 export const Card: FC<TProps> = (props) => {
   const { img, title, category, author, time, desc, ...oth } = props;
-  const { peopleCount, ratting, isProfile, isSuggestion } = oth || {};
-
-  const isMy = isProfile || isSuggestion;
+  const { peopleCount, ratting, isProfile, isSuggestion, isFavorite } =
+    oth || {};
 
   const descriptionClass = "text-[14px] leading-[22px] text-[#A5A5A5] w-full";
 
   return (
     <div
       className={cn(
-        "flex sm:flex-col font-poppins border-t sm:border-t-0 border-[#DBDBDB] gap-2 sm:gap-0",
-        "w-full h-auto",
+        "flex sm:flex-col font-poppins border-t sm:border-t-0 border-[#DBDBDB] gap-2 sm:gap-0 w-full h-auto",
         isSuggestion
           ? "sm:max-w-[146px] sm:min-h-[200px] max-h-[200px]"
           : "sm:max-w-[240px] sm:min-h-[375px] max-h-[381px]"
@@ -50,6 +52,7 @@ export const Card: FC<TProps> = (props) => {
             {title}
           </h3>
           <h5 className="text-[#999999] text-sm">{category}</h5>
+
           {!isSuggestion && (
             <div className="flex justify-start  sm:justify-between  items-center gap-5 sm:gap-1.5">
               {!isProfile && <p>{author}</p>}
@@ -59,10 +62,11 @@ export const Card: FC<TProps> = (props) => {
               </div>
             </div>
           )}
+
           <desc className={cn(descriptionClass, "sm:block hidden")}>
             “
-            {desc.length > (isMy ? 15 : 55)
-              ? `${desc.slice(0, isMy ? 15 : 55)}...`
+            {desc.length > (isSuggestion ? 15 : 55)
+              ? `${desc.slice(0, isSuggestion ? 15 : 55)}...`
               : desc}
             ”
           </desc>
@@ -72,7 +76,8 @@ export const Card: FC<TProps> = (props) => {
         </div>
 
         <CardFooter
-          isMy={isMy}
+          isFavorite={isFavorite}
+          isMy={isProfile || isSuggestion}
           images={props.peopleImages}
           peopleCount={peopleCount}
           className="flex sm:hidden"
@@ -80,21 +85,29 @@ export const Card: FC<TProps> = (props) => {
       </div>
       {/* Footer Section */}
       <CardFooter
-        isMy={isMy}
+        isFavorite={isFavorite}
+        isMy={isProfile || isSuggestion}
         images={props.peopleImages}
         peopleCount={peopleCount}
         className="hidden sm:flex"
       />
-      <div className=" sm:hidden size-6 mt-3 min-w-6 rounded-full bg-primary text-white text-[11px] flex justify-center items-center">
-        {ratting}
-      </div>
+      {!isFavorite && (
+        <div className=" sm:hidden size-6 mt-3 min-w-6 rounded-full bg-primary text-white text-[11px] flex justify-center items-center">
+          {ratting}
+        </div>
+      )}
     </div>
   );
 };
 
-type FProps = { images: string[]; peopleCount: number; isMy?: boolean };
+type FProps = {
+  images: string[];
+  peopleCount: number;
+  isMy?: boolean;
+  isFavorite?: boolean;
+};
 const CardFooter: FC<FProps & IClassName> = (props) => {
-  const { images, peopleCount, isMy, className } = props;
+  const { images, peopleCount, isMy, className, isFavorite } = props;
 
   const userData = [
     { img: "/profile-love.svg", total: 41 },
@@ -113,7 +126,7 @@ const CardFooter: FC<FProps & IClassName> = (props) => {
         ))
       ) : (
         <>
-          <div className="hidden sm:block">
+          <div className={isFavorite ? "block" : "hidden sm:block"}>
             <Image alt="Favorite" src="/love-fill.svg" width={23} height={21} />
           </div>
           <div className="flex -space-x-2.5 relative">

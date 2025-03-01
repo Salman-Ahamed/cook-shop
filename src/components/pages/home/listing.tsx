@@ -25,8 +25,9 @@ export const Listing: FC<TProps> = ({ items, search }) => {
         />
         <ListingSearch />
       </div>
-
-      <ListItem data={data} />
+      <div className="py-11">
+        <ListItem data={data} />
+      </div>
     </main>
   );
 };
