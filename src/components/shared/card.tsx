@@ -1,7 +1,12 @@
+"use client";
+
 import { IClassName, IRecipe } from "@/interface";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { FC } from "react";
+import Link from "next/link";
+import { FC, useState } from "react";
+import { ClickAndLink } from "./click-and-link";
+import { ViewItem } from "./view-item";
 
 type TProps = IRecipe & {
   isProfile?: boolean;
@@ -12,6 +17,8 @@ export const Card: FC<TProps> = (props) => {
   const { img, title, category, author, time, desc, ...oth } = props;
   const { peopleCount, ratting, isProfile, isSuggestion, isFavorite } =
     oth || {};
+
+  const [open, setOpen] = useState(false);
 
   const descriptionClass = "text-[14px] leading-[22px] text-[#A5A5A5] w-full";
 
@@ -24,7 +31,8 @@ export const Card: FC<TProps> = (props) => {
           : "sm:max-w-[240px] sm:min-h-[375px] max-h-[381px]"
       )}
     >
-      <figure>
+      <ViewItem isOpen={open} onClose={() => setOpen(false)} />
+      <Link href="/recipe-view">
         <Image
           alt={title}
           src={img}
@@ -32,9 +40,9 @@ export const Card: FC<TProps> = (props) => {
           height={180}
           className="size-[135px] block sm:hidden"
         />
-      </figure>
+      </Link>
       <div className="flex-1">
-        <figure>
+        <ClickAndLink link="/recipe-view" onClick={() => setOpen(true)}>
           <Image
             alt={title}
             src={img}
@@ -45,12 +53,14 @@ export const Card: FC<TProps> = (props) => {
               isSuggestion && "h-[98px]"
             )}
           />
-        </figure>
+        </ClickAndLink>
         {/* Body Section */}
         <div className="pt-2">
-          <h3 className="text-[#9C4B00] font-medium text-nowrap overflow-hidden overflow-ellipsis">
-            {title}
-          </h3>
+          <ClickAndLink link="/recipe-view" onClick={() => setOpen(true)}>
+            <h3 className="text-[#9C4B00] font-medium text-nowrap overflow-hidden overflow-ellipsis">
+              {title}
+            </h3>
+          </ClickAndLink>
           <h5 className="text-[#999999] text-sm">{category}</h5>
 
           {!isSuggestion && (

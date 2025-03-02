@@ -7,7 +7,7 @@ import Image from "next/image";
 import { FC, useEffect } from "react";
 
 type TProps = { item: string; onClick: () => void } & IClassName;
-const Tags: FC<TProps> = ({ item, onClick, className }) => (
+export const Tags: FC<TProps> = ({ item, onClick, className }) => (
   <div
     className={cn(
       "bg-primary text-white py-1 text-sm px-2 rounded-full flex justify-center items-center gap-1.5 min-w-fit",
@@ -25,7 +25,7 @@ export const ListingSearch = () => {
   const { items, search, searchItem, addItem, ...oth } = useSearch();
   const { setSearch, removeItem, handleSearch } = oth;
 
-  useEffect(() => handleSearch(), [items]);
+  useEffect(() => handleSearch(), [handleSearch, items]);
 
   return (
     <div className="relative z-10 text-white pt-7 pb-8 w-full max-w-[706px] mx-auto px-2.5 md:px-0">

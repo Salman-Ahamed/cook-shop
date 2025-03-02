@@ -11,9 +11,7 @@ const RecipeAdd = () => {
         </p>
       </div>
 
-      <div>
-        <Form />
-      </div>
+      <Form />
     </main>
   );
 };
