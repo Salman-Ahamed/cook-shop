@@ -3,20 +3,27 @@
 import { Modal } from "@/components/shared";
 import { Button } from "@/components/shared/button";
 import Image from "next/image";
+import Link from "next/link";
 import { useState } from "react";
 import { Form } from "./form";
 
 export const AddItem = () => {
   const [open, setOpen] = useState(false);
+  const btnClass =
+    "fixed xl:absolute right-6 bottom-[45px] sm:bottom-0 sm:top-[50%] bg-gradient-to-t from-[#FF7A00] to-[#9C4B00] size-[45px] rounded-[10px] flex justify-center items-center";
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        className="fixed xl:absolute right-6 bottom-[45px] sm:bottom-0 sm:top-[50%] bg-gradient-to-t from-[#FF7A00] to-[#9C4B00] size-[45px] rounded-[10px] flex justify-center items-center"
-      >
-        <Image alt="add" src="/plus.svg" width={15} height={15} />
-      </button>
+      <div className="hidden sm:block">
+        <button onClick={() => setOpen(true)} className={btnClass}>
+          <Image alt="add" src="/plus.svg" width={15} height={15} />
+        </button>
+      </div>
+      <div className="block sm:hidden">
+        <Link href="/recipe-add" className={btnClass}>
+          <Image alt="add" src="/plus.svg" width={15} height={15} />
+        </Link>
+      </div>
       <div className="hidden sm:block ">
         <Modal isOpen={open} onClose={() => setOpen(false)}>
           <div className="grid grid-cols-12 gap-[50px] font-poppins">
