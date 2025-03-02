@@ -1,3 +1,4 @@
+import { AddItem } from "@/components/pages/profile";
 import { ListItem } from "@/components/shared";
 import { IRecipe } from "@/interface";
 import { recipes } from "@/lib/data";
@@ -7,10 +8,8 @@ const ProfilePage = () => {
   const data: IRecipe[] = recipes.slice(0, 6);
 
   return (
-    <div className="pb-5 sm:pb-40 sm:relative">
-      <button className="fixed right-6 bottom-[45px] sm:top-[50%] bg-gradient-to-t from-[#FF7A00] to-[#9C4B00] size-[45px] rounded-[10px] flex justify-center items-center">
-        <Image alt="add" src="/plus.svg" width={15} height={15} />
-      </button>
+    <div className="pb-5 sm:pb-40 sm:relative ">
+      <AddItem />
       {data.length > 0 ? (
         <ListItem isProfile data={data} />
       ) : (
